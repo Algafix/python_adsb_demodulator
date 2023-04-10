@@ -1,15 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from adbs_symbol_to_hex import adbs_decode_symbols
+from adbs_decode_symbols import adbs_decode_symbols
 
 
 #############################################
 # Load data
 #############################################
 
-#filename = '896478_live.complex16u'
-filename = 'message.complex16u'
+filename = '896478_live.complex16u'
+#filename = 'message.complex16u'
 
 Fs = 2000000
 
