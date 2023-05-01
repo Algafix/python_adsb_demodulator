@@ -44,6 +44,16 @@ def validate_crc(message: BitArray):
 
 ERROR_MSG = 'Not in table!'
 
+def tc19(message: BitArray):
+
+    subtype = message[5:8]
+
+    vrate_source = message[35]
+
+
+    pass
+
+
 
 def adbs_decode_bits(bits: str, filter_df=False):
 
@@ -55,26 +65,32 @@ def adbs_decode_bits(bits: str, filter_df=False):
     me = data[32:88]
     crc = data[88:112]
 
+    crc_ok = validate_crc(BitArray(data))
+
+    if not crc_ok:
+        return 0
+
     if filter_df and filter_df != df:
         return 0
 
-    print(f"\n[+] Raw hex message: {data.hex}")
-
-    print(f"""
-    \tDF: {df}\t\t{DownlinkFormat.get(df, ERROR_MSG)}
-    \tCA: {ca}\t\t{Capability.get(ca, ERROR_MSG)}
-    \tICAO: {icao}
-    \tCRC: {crc}\t{'OK!' if validate_crc(data) else 'FAIL!'}""")
-
     tc = me[0:5].uint
 
-    print(f"""
-    \tMessage: {me}
-    \t\tType Code: {tc}\t\t{TypeCode.get(tc, ERROR_MSG)}""")
+
+
+    info_message = f"""
+[+] Raw hex message: {data.hex}
+    DF: {df}\t\t{DownlinkFormat.get(df, ERROR_MSG)}
+    CA: {ca}\t\t{Capability.get(ca, ERROR_MSG)}
+    ICAO: {icao}
+    CRC: {crc}\t{'OK!' if crc_ok else 'FAIL!'}
+
+    Message: {me}
+        Type Code: {tc}\t\t{TypeCode.get(tc, ERROR_MSG)}
+    """
+
+    print(info_message)
 
     return 1
 
 if __name__ == '__main__':
-    #symbols = '101000010100000010010101101001101001010110010110011010010110010101101010100101011001011010010110010101011001011010100110101010011001010110101010010110100101010101010101011001011001011001011010011001100101100110100101011010010101011010010110'
-    #adbs_decode_bits(symbols)
     pass
