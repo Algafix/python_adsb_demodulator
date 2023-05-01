@@ -1,2 +1,7 @@
 **/__pycache__/
 **/.vscode/
+**/recordings/**
+!**/recordings/onflight_1extraplane.zip
+!**/recordings/useful_to_compare.bin
+onflight_1extraplane.bin
+book-the_1090mhz_riddle-junzi_sun.pdf
