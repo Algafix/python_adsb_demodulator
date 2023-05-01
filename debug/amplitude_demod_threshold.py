@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from adbs_decode_symbols import adbs_decode_symbols
+from adsb_decode_symbols import adsb_decode_symbols
 
 
 #############################################
@@ -104,7 +104,7 @@ for i in range(len(symbols)-len(preamble)):
         full_message = symbols[start_index:i+len(preamble)]
         print(full_message)
         print()
-        adbs_decode_symbols(''.join(str(i) for i in full_message))
+        adsb_decode_symbols(''.join(str(i) for i in full_message))
         
 
 

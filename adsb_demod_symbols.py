@@ -3,7 +3,7 @@ import argparse
 
 from rtlsdr import RtlSdr
 
-from adbs_decode_bits import adbs_decode_bits
+from adsb_decode_bits import adsb_decode_bits
 
 
 BUFFER_SIZE = 256 * 1024 # 256K IQ samples
@@ -75,7 +75,7 @@ def decode_symbols(demod_signal: np.ndarray):
             continue
 
         ##### DECODE BITS #####
-        stats += adbs_decode_bits(''.join(str(i) for i in adbs_message_b), filter_df=17)
+        stats += adsb_decode_bits(''.join(str(i) for i in adbs_message_b), filter_df=17)
 
     return stats
 

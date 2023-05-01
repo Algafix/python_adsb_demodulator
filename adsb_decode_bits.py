@@ -55,7 +55,7 @@ def tc19(message: BitArray):
 
 
 
-def adbs_decode_bits(bits: str, filter_df=False):
+def adsb_decode_bits(bits: str, filter_df=False):
 
     data = BitArray(bin=''.join(bits))
 

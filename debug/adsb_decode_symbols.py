@@ -49,7 +49,7 @@ ONE = '10'
 ZERO = '01'
 
 
-def adbs_decode_symbols(symbols: str):
+def adsb_decode_symbols(symbols: str):
 
     if symbols.startswith(PREAMBLE):
         print("[+] Preamble OK")

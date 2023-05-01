@@ -8,11 +8,11 @@ import pstats
 
 from rtlsdr import RtlSdr
 
-from adbs_decode_bits import adbs_decode_bits
+from adsb_decode_bits import adsb_decode_bits
 
 #filename = '../recordings/896478_live.complex16u'  # 8d8964789909de8f30049352c619
 #filename = '../recordings/message.complex16u'  # 8f4d2023587790bba5998227c948
-filename = '../recordings/usefull_to_compare.bin'
+filename = '../recordings/useful_to_compare.bin'
 
 BUFFER_SIZE = 256 * 1024 # 256K IQ samples
 #BUFFER_SIZE = 1000
@@ -77,7 +77,7 @@ def decode_symbols(demod_signal: np.ndarray):
             continue
 
         ##### DECODE BITS #####
-        stats += adbs_decode_bits(''.join(str(i) for i in adbs_message_b), filter_df=17)
+        stats += adsb_decode_bits(''.join(str(i) for i in adbs_message_b), filter_df=17)
 
     return stats
 
